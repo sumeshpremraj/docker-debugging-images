@@ -1,0 +1,16 @@
+FROM debian:stable-slim
+
+# install ca-certificates so that HTTPS works consistently
+# other runtime dependencies for Python are installed later
+RUN apt-get update && \
+	apt-get install -y \
+	ca-certificates \
+    dnsutils \
+    curl \
+    jq \
+    #git \
+    #mongodb-tools \
+    #mysql-client \
+    #postgresql-client \
+    vim \
+  && rm -rf /var/lib/apt/lists/*
