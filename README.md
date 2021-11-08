@@ -5,4 +5,4 @@ This is a set of lean Docker images with some essential debugging and ops tools 
 
 I use it when debugging problems in Kubernetes clusters and I need a shell with the usual suspects (curl, dig, DB clients, vim etc.) within the cluster.
 
-Check out all the images on [Docker Hub](https://hub.docker.com/repository/docker/sumeshpremraj/ops-toolkit/tags?page=1&ordering=last_updated&name=alpine-latest), or customize the Dockerfile and build it locally for your use.
+Check out all the images on [Docker Hub](https://hub.docker.com/repository/docker/sumeshpremraj/ops-toolkit/), or customize the Dockerfile and build it locally for your use.
