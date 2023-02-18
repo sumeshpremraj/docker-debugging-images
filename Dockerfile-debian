@@ -7,10 +7,9 @@ RUN apt-get update && \
 	ca-certificates \
     dnsutils \
     curl \
-    #jq \
-    #git \
-    #mongodb-tools \
-    #mysql-client \
-    #postgresql-client \
-    #vim \
+    jq \
+    git \
+    mariadb-client \
+    postgresql-client \
+    vim \
   && rm -rf /var/lib/apt/lists/*

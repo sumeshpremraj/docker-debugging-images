@@ -6,9 +6,9 @@ RUN apk add --no-cache ca-certificates && \
     apk add --no-cache --virtual .fetch-deps \
     bind-tools \
     curl \
-    #vim \
-    #jq \
-    #git \
-    #mongodb-tools \
-    #mysql-client \
-    #postgresql-client
+    vim \
+    jq \
+    git \
+    mongodb-tools \
+    mysql-client \
+    postgresql-client
