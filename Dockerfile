@@ -12,3 +12,8 @@ RUN apk add --no-cache ca-certificates && \
     mongodb-tools \
     mysql-client \
     postgresql-client
+
+COPY entrypoint.sh /entrypoint.sh
+RUN chmod +x /entrypoint.sh
+
+ENTRYPOINT ["/entrypoint.sh"]
