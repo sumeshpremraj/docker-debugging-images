@@ -1,16 +1,27 @@
-name: Publish Docker image
+name: Publish Docker images
 
 on:
   push:
     branches: master
+    paths:
+      - 'Dockerfile'
+      - 'Dockerfile-debian'
+      - '.github/workflows/build-push-images.yaml'
 
 jobs:
   push_to_registries:
-    name: Push Docker image to multiple registries
+    name: Push Docker images to multiple registries
     runs-on: ubuntu-latest
     permissions:
       packages: write
       contents: read
+    strategy:
+      matrix:
+        include:
+          - dockerfile: Dockerfile
+            image_suffix: alpine
+          - dockerfile: Dockerfile-debian
+            image_suffix: debian
     steps:
       - name: Check out the repo
         uses: actions/checkout@v4
@@ -35,11 +46,16 @@ jobs:
           images: |
             sumeshpremraj/docker-debugging-images
             ghcr.io/${{ github.repository }}
+          tags: |
+            type=raw,value=${{ matrix.image_suffix }}
+            type=raw,value=latest-${{ matrix.image_suffix }}
       
       - name: Build and push Docker images
         uses: docker/build-push-action@3b5e8027fcad23fda98b2e3ac259d8d67585f671
         with:
           context: .
+          file: ${{ matrix.dockerfile }}
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
+
