@@ -1,4 +1,4 @@
-FROM alpine:3
+FROM alpine:3.21.2
 
 # install ca-certificates so that HTTPS works consistently
 # other runtime dependencies for Python are installed later
