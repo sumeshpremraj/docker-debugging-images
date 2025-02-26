@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: debugging-image-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: debugging-image
+  template:
+    metadata:
+      labels:
+        app: debugging-image
+    spec:
+      containers:
+      - name: debugging-image
+        image: sumeshpremraj/docker-debugging-images:alpine
+        command: ["/bin/sleep", "infinity"]
+ 
